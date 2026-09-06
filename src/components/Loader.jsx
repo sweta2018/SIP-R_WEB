@@ -1,18 +1,26 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 
 export default function Loader({ onComplete }) {
   const loaderRef = useRef(null)
-  const kettleRef = useRef(null)
-  const fillRef = useRef(null)
-  const liquidRef = useRef(null)
-  const streamClipRef = useRef(null)
-  const textRef = useRef(null)
-  const dotsRef = useRef(null)
+  const imageContainerRef = useRef(null)
+  const imagesRef = useRef([])
+  const textNodesRef = useRef([])
 
-  const [loadingText, setLoadingText] = useState('Brewing')
-  const [dots, setDots] = useState('')
-  const [showDots, setShowDots] = useState(true)
+  // SIP'R Logo Refs
+  const sRef = useRef(null)
+  const glassRef = useRef(null)
+  const pRef = useRef(null)
+  const dropRef = useRef(null)
+  const rRef = useRef(null)
+
+  const steps = [
+    { img: `${import.meta.env.BASE_URL}step0.png`, text: "Where every good cup begins." },
+    { img: `${import.meta.env.BASE_URL}step1.png`, text: "Freshly ground. Full of character." },
+    { img: `${import.meta.env.BASE_URL}step2.png`, text: "Rich. Deep. Intense." },
+    { img: `${import.meta.env.BASE_URL}step3.png`, text: "Smoothness meets intensity." },
+    { img: `${import.meta.env.BASE_URL}step4.png`, text: "Your moment is ready." },
+  ]
 
   useEffect(() => {
     const tl = gsap.timeline({
@@ -29,140 +37,143 @@ export default function Loader({ onComplete }) {
       }
     })
 
-    gsap.set(streamClipRef.current, { attr: { height: 0 } })
-    gsap.set(fillRef.current, { scaleX: 0, transformOrigin: 'left center' })
-    gsap.set(kettleRef.current, { svgOrigin: '70 110' })
-    gsap.set(liquidRef.current, { svgOrigin: '70 110' })
+    // Set all images and texts to block but transparent initially
+    gsap.set(imagesRef.current, { opacity: 0, display: 'block', scale: 0.95 })
+    gsap.set(textNodesRef.current, { opacity: 0, display: 'block' })
 
-    const dotsInterval = setInterval(() => {
-      setDots(prev => prev.length >= 3 ? '' : prev + '.')
-    }, 400)
+    // Create sequence animation
+    const timePerFrame = 1.2; // slightly longer to allow reading the text
+    const fadeDuration = 0.6; // seconds for crossfade
 
-    // 1. Loader appears (Removed tl.from to prevent React 18 strict mode bug, it will just mount visible)
+    steps.forEach((_, index) => {
+      const img = imagesRef.current[index];
+      const textNode = textNodesRef.current[index];
 
-    // 2. Kettle tilts forward
-    tl.to(kettleRef.current, {
-      rotation: 40,
-      duration: 1.2,
-      ease: 'power2.inOut'
-    }, "pour")
+      if (index === 0) {
+        // Fade in first image and text
+        tl.to(img, { opacity: 1, scale: 1, duration: fadeDuration, ease: 'power2.inOut' }, 'frame0')
+        tl.to(textNode, { opacity: 1, duration: fadeDuration, ease: 'power2.inOut' }, 'frame0')
+      } else {
+        // Crossfade out previous image and text
+        tl.to(imagesRef.current[index - 1], { opacity: 0, duration: fadeDuration, ease: 'power2.inOut' }, `crossfade${index}`)
+        tl.to(textNodesRef.current[index - 1], { opacity: 0, duration: fadeDuration, ease: 'power2.inOut' }, `crossfade${index}`)
 
-    // Counter-rotate the liquid so it stays physically level inside the glass
-    tl.to(liquidRef.current, {
-      rotation: -40,
-      duration: 1.2,
-      ease: 'power2.inOut'
-    }, "pour")
+        // Crossfade in current image and text
+        tl.to(img, { opacity: 1, scale: 1, duration: fadeDuration, ease: 'power2.inOut' }, `crossfade${index}`)
+        tl.to(textNode, { opacity: 1, duration: fadeDuration, ease: 'power2.inOut' }, `crossfade${index}`)
+      }
 
-    // 3. Coffee stream flows down perfectly smooth
-    tl.to(streamClipRef.current, {
-      attr: { height: 120 },
-      duration: 0.5,
-      ease: 'power1.in'
+      // Add SIP'R logo animation on the last step (index 4)
+      if (index === 4) {
+        // Wait 1.5 seconds, then fade out the step4 image completely
+        tl.to(img, { opacity: 0, duration: 0.6 }, `crossfade${index}+=1.5`)
+        tl.to(textNode, { opacity: 0, duration: 0.6 }, `crossfade${index}+=1.5`)
+
+        const logoLetters = [sRef.current, glassRef.current, pRef.current, dropRef.current, rRef.current];
+        tl.fromTo(logoLetters,
+          { y: -80, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: 'bounce.out' },
+          `crossfade${index}+=1.8`
+        )
+      }
+
+      // Wait for the frame duration
+      if (index === 4) {
+        // The logo drop finishes around crossfade4 + 3.2s. 
+        // We transition to the main page almost instantly after it completes.
+        tl.to({}, { duration: 0.2 }, `crossfade${index}+=3.2`)
+      } else {
+        tl.to({}, { duration: timePerFrame })
+      }
     })
-
-    // 4. Loading bar fills
-    tl.to(fillRef.current, {
-      scaleX: 1,
-      duration: 3.5,
-      ease: 'power1.inOut'
-    })
-
-    // 5. Coffee stream stops (falls into the cup)
-    tl.to(streamClipRef.current, {
-      attr: { y: 180, height: 0 },
-      duration: 0.4,
-      ease: 'power1.out'
-    }, "-=0.2")
-
-    // 6. Kettle rotates back and liquid stays level
-    tl.to(kettleRef.current, {
-      rotation: 0,
-      duration: 1,
-      ease: 'power2.inOut'
-    }, "<")
-
-    tl.to(liquidRef.current, {
-      rotation: 0,
-      duration: 1,
-      ease: 'power2.inOut'
-    }, "<")
-
-    // 7. Text changes
-    tl.call(() => {
-      clearInterval(dotsInterval)
-      setShowDots(false)
-      
-      gsap.to(textRef.current, {
-        opacity: 0,
-        y: -10,
-        duration: 0.4,
-        onComplete: () => {
-          setLoadingText('Sip Deep.\nDiscover Silence.')
-          gsap.fromTo(textRef.current, 
-            { opacity: 0, y: 10 }, 
-            { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }
-          )
-        }
-      })
-    })
-
-    tl.to({}, { duration: 1.5 }) // Wait before fade out
 
     return () => {
-      clearInterval(dotsInterval)
       tl.kill()
     }
   }, [onComplete])
 
   return (
     <div className="loader-overlay" ref={loaderRef}>
-      <div className="loader-content">
-        
-        <div className="loader-graphics">
-          {/* Unified Kettle & Stream SVG */}
-          <div className="kettle-svg-container">
-            <svg width="200" height="180" viewBox="0 0 200 180">
-              <defs>
-                <clipPath id="streamClip">
-                  <rect x="100" y="60" width="70" height="0" ref={streamClipRef} />
-                </clipPath>
-              </defs>
-              <g ref={kettleRef}>
-                {/* Liquid inside that stays level, large-arc-flag=1 to touch the circular base */}
-                <g ref={liquidRef}>
-                  <path d="M 36.5 100 Q 70 115 103.5 100 A 35 35 0 1 1 36.5 100 Z" fill="#4B2E24" />
-                </g>
-                
-                {/* Kettle Outline */}
-                <path d="M 45.2 85.2 A 35 35 0 1 0 94.8 85.2 L 85 45 L 55 45 Z" fill="none" stroke="#4B2E24" strokeWidth="5" strokeLinejoin="round" />
-                
-                {/* Lid */}
-                <rect x="50" y="35" width="40" height="10" fill="none" stroke="#4B2E24" strokeWidth="5" strokeLinejoin="round" />
-                <line x1="70" y1="35" x2="70" y2="25" stroke="#4B2E24" strokeWidth="5" strokeLinecap="round" />
-                
-                {/* Handle */}
-                <path d="M 35 110 C 10 110, 10 55, 55 60" fill="none" stroke="#4B2E24" strokeWidth="5" strokeLinecap="round" />
-              </g>
+      <div className="loader-content" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
 
-              {/* Smooth parabolic coffee stream aligning with the lower lip of the mouth */}
-              <g clipPath="url(#streamClip)">
-                <path d="M 110 75 C 130 80, 142 120, 142 180 L 148 180 C 148 110, 140 65, 123 70 Z" fill="#4B2E24" />
-              </g>
-            </svg>
-          </div>
+        <div
+          className="loader-graphics"
+          ref={imageContainerRef}
+          style={{
+            position: 'relative',
+            width: 'clamp(100px, 28vw, 140px)',
+            height: 'clamp(100px, 28vw, 140px)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginBottom: '0.5rem'
+          }}
+        >
+          {steps.map((step, index) => (
+            <img
+              key={index}
+              ref={el => imagesRef.current[index] = el}
+              src={step.img}
+              alt={`Loading step ${index}`}
+              style={{
+                position: 'absolute',
+                maxWidth: index === 2 ? '90%' : index === 3 ? '80%' : '100%',
+                maxHeight: index === 2 ? '90%' : index === 3 ? '80%' : '100%',
+                objectFit: 'contain'
+              }}
+            />
+          ))}
 
-          {/* Progress Bar */}
-          <div className="progress-bar-container">
-            <div className="progress-bar-bg"></div>
-            <div className="progress-bar-fill" ref={fillRef}></div>
+          {/* SIP'R Logo Container */}
+          <div style={{
+            position: 'absolute',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 20,
+            width: '120%',
+            left: '-10%',
+            height: '100%',
+            pointerEvents: 'none'
+          }}>
+            <img ref={sRef} src={`${import.meta.env.BASE_URL}s.png`} alt="S" style={{ width: '22%', opacity: 0 }} />
+            <img ref={glassRef} src={`${import.meta.env.BASE_URL}glass.png`} alt="I" style={{ width: '15%', opacity: 0, margin: '0 1%' }} />
+            <img ref={pRef} src={`${import.meta.env.BASE_URL}p.png`} alt="P" style={{ width: '22%', opacity: 0 }} />
+            <img ref={dropRef} src={`${import.meta.env.BASE_URL}sip-drop.png`} alt="'" style={{ width: '12%', opacity: 0, marginTop: '-16%', marginLeft: '-5%', marginRight: '-5%', zIndex: 21 }} />
+            <img ref={rRef} src={`${import.meta.env.BASE_URL}r.png`} alt="R" style={{ width: '22%', opacity: 0 }} />
           </div>
         </div>
 
-        {/* Text */}
-        <div className="loader-text-container" ref={textRef}>
-          <span className="loader-text-main">{loadingText}</span>
-          {showDots && <span className="loader-text-dots">{dots}</span>}
+        {/* Text Sequence */}
+        <div
+          className="loader-text-container"
+          style={{
+            position: 'relative',
+            minHeight: '60px',
+            width: '80vw',
+            maxWidth: '350px',
+            display: 'flex',
+            justifyContent: 'center'
+          }}
+        >
+          {steps.map((step, index) => (
+            <span
+              key={index}
+              ref={el => textNodesRef.current[index] = el}
+              className="loader-text-main"
+              style={{
+                position: 'absolute',
+                whiteSpace: 'pre-line',
+                textAlign: 'center',
+                width: '100%',
+                fontSize: '1.2rem',
+                lineHeight: '1.4',
+                padding: '0 10px'
+              }}
+            >
+              {step.text}
+            </span>
+          ))}
         </div>
 
       </div>

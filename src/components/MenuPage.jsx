@@ -194,8 +194,6 @@ export default function MenuPage() {
                   <li key={i} className="menu-item-row">
                     <div className="item-top">
                       <span className="item-name">{item.name}</span>
-                      <span className="item-leader"></span>
-                      <span className="item-price">{item.price}</span>
                     </div>
                     <div className="item-desc">{item.desc}</div>
                   </li>
@@ -214,8 +212,6 @@ export default function MenuPage() {
                   <li key={i} className="menu-item-row">
                     <div className="item-top">
                       <span className="item-name">{item.name}</span>
-                      <span className="item-leader"></span>
-                      <span className="item-price">{item.price}</span>
                     </div>
                     <div className="item-desc">{item.desc}</div>
                   </li>
@@ -237,8 +233,6 @@ export default function MenuPage() {
                   <li key={i} className="menu-item-row">
                     <div className="item-top">
                       <span className="item-name">{item.name}</span>
-                      <span className="item-leader"></span>
-                      <span className="item-price">{item.price}</span>
                     </div>
                     <div className="item-desc">{item.desc}</div>
                   </li>
@@ -257,8 +251,6 @@ export default function MenuPage() {
                   <li key={i} className="menu-item-row">
                     <div className="item-top">
                       <span className="item-name">{item.name}</span>
-                      <span className="item-leader"></span>
-                      <span className="item-price">{item.price}</span>
                     </div>
                     <div className="item-desc">{item.desc}</div>
                   </li>

@@ -1,6 +1,8 @@
 import { useLayoutEffect, useRef, useState, useEffect } from 'react'
 import { gsap } from 'gsap'
 import { Observer } from 'gsap/Observer'
+import AnimatedTitle from './AnimatedTitle'
+import AnimatedParagraph from './AnimatedParagraph'
 import { IMAGES } from '../data/images'
 
 gsap.registerPlugin(Observer)
@@ -10,16 +12,19 @@ const SLIDES = [
     id: 1,
     left: (
       <div className="split-img-panel">
-        <img src={IMAGES.heroCup} alt="Coffee Cup" />
+        <img src={`${import.meta.env.BASE_URL}slide1.png`} alt="Coffee Cup" />
       </div>
     ),
     right: (
       <div className="split-content-panel">
-        <h2 className="split-title">Exquisite <em>Dish</em></h2>
-        <p className="split-desc">
-          Et tortor consequat id porta nibh venenatis. Feugiat ni preti fusce id in neque aliquam ve. 
-          Everything poured with absolute perfection and care.
-        </p>
+        <AnimatedTitle className="split-title" text="A Place to" emText="Sip Deep" />
+        <AnimatedParagraph
+          className="split-desc"
+          text="Beautifully crafted coffee, refreshing pours, fresh bakes, and moments worth slowing down for."
+        />
+        <div style={{ marginTop: '40px' }}>
+          <a href="#menu" className="btn btn-fill">Discover Silence</a>
+        </div>
       </div>
     )
   },
@@ -27,52 +32,40 @@ const SLIDES = [
     id: 2,
     left: (
       <div className="split-content-panel bg-soft">
-        <h2 className="split-title">Artisan <em>Bakery</em></h2>
-        <ul className="split-menu-list">
-          <li>
-            <div>
-              <h4>Butter Croissant</h4>
-              <p>Flaky, buttery goodness baked fresh daily.</p>
-            </div>
-            <span className="price">$4.20</span>
-          </li>
-          <li>
-            <div>
-              <h4>Almond Danish</h4>
-              <p>Sweet almond paste with toasted flakes.</p>
-            </div>
-            <span className="price">$5.50</span>
-          </li>
-          <li>
-            <div>
-              <h4>Cinnamon Cruffin</h4>
-              <p>A hybrid pastry dusted with cinnamon sugar.</p>
-            </div>
-            <span className="price">$4.80</span>
-          </li>
-        </ul>
+        <AnimatedTitle className="split-title" text="Signature" emText="Sips" style={{ textAlign: 'right' }} />
+        <AnimatedParagraph
+          className="split-desc"
+          style={{ textAlign: 'right', alignSelf: 'flex-end' }}
+          text="A little citrus. A little fizz. A lot of flavour. Crafted to refresh, surprise, and make every sip a little more memorable."
+        />
+        <div style={{ marginTop: '40px', display: 'flex', justifyContent: 'flex-end' }}>
+          <a href="#infuse-coffee" className="btn btn-fill">Discover Thirst</a>
+        </div>
       </div>
     ),
     right: (
       <div className="split-img-panel">
-        <img src={IMAGES.bakeryPastryDisplay} alt="Bakery Display" />
+        <img src={`${import.meta.env.BASE_URL}slide2.png`} alt="Bakery Display" />
       </div>
     )
   },
   {
     id: 3,
     left: (
-      <div className="split-img-panel">
-        <img src={IMAGES.sigBarista} alt="Barista Pouring" />
+      <div className="split-img-panel" style={{ backgroundColor: 'var(--bg)' }}>
+        <img src={`${import.meta.env.BASE_URL}slide3.png`} alt="Barista Pouring" />
       </div>
     ),
     right: (
       <div className="split-content-panel">
-        <h2 className="split-title">Signature <em>Pour</em></h2>
-        <p className="split-desc">
-          Our baristas are masters of their craft, turning every cup into an art form. 
-          We use only single-origin, ethically sourced beans roasted in-house.
-        </p>
+        <AnimatedTitle className="split-title" text="Freshly" emText="Baked" />
+        <AnimatedParagraph
+          className="split-desc"
+          text="From buttery pastries to rich brownies, crisp crackers and freshly baked cookies — the perfect bite to pair with your SIPR favourite."
+        />
+        <div style={{ marginTop: '40px' }}>
+          <a href="#infuse-bakery" className="btn btn-fill">Discover Craves</a>
+        </div>
       </div>
     )
   },
@@ -80,19 +73,27 @@ const SLIDES = [
     id: 4,
     left: (
       <div className="split-content-panel bg-soft">
-        <h2 className="split-title">Our <em>Story</em></h2>
-        <p className="split-desc">
-          Ember &amp; Oak is a slow-poured, single-origin coffee house — where every cup is 
-          roasted in-house and every pastry is baked before dawn.
-        </p>
-        <div style={{ marginTop: '40px' }}>
-          <a href="#menu" className="btn btn-fill">Explore Menu</a>
+        <AnimatedTitle className="split-title" text="Crafted to" emText="Perfection" style={{ textAlign: 'right' }} />
+        <AnimatedParagraph
+          className="split-desc"
+          style={{ textAlign: 'right', alignSelf: 'flex-end' }}
+          text="From freshly ground beans to a beautifully poured latte — every cup is made with care."
+        />
+        <div style={{ marginTop: '40px', display: 'flex', justifyContent: 'flex-end' }}>
+          <a href="#menu" className="btn btn-fill">Discover Us</a>
         </div>
       </div>
     ),
     right: (
       <div className="split-img-panel">
-        <img src={IMAGES.aboutInterior} alt="Coffee House Interior" />
+        <video
+          src={`${import.meta.env.BASE_URL}slide4.mp4`}
+          autoPlay
+          muted
+          loop
+          playsInline
+          style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.85) contrast(1.1)' }}
+        />
       </div>
     )
   }
@@ -118,7 +119,7 @@ export default function SplitSlider() {
 
     const ctx = gsap.context(() => {
       const numSlides = SLIDES.length
-      
+
       const gotoSlide = (index) => {
         if (index < 0 || index >= numSlides) return
         isAnimating.current = true
@@ -129,7 +130,7 @@ export default function SplitSlider() {
           duration: 1.0,
           ease: "power2.inOut"
         })
-        
+
         gsap.to(rightPanelRef.current, {
           y: () => index * (window.innerHeight - 85),
           duration: 1.0,
@@ -149,7 +150,7 @@ export default function SplitSlider() {
         tolerance: 10,
         preventDefault: true
       })
-      
+
     }, containerRef)
 
     return () => ctx.revert()
@@ -158,12 +159,20 @@ export default function SplitSlider() {
   if (isMobile) {
     return (
       <section className="mobile-slider-container">
-        {SLIDES.map((slide) => (
-          <div key={`mobile-${slide.id}`} className="mobile-slide">
-            <div className="mobile-panel">{slide.left}</div>
-            <div className="mobile-panel">{slide.right}</div>
-          </div>
-        ))}
+        {SLIDES.map((slide, index) => {
+          // Desktop left is content on slide index 1 and 3. Reverse them so Image is always on top.
+          const isLeftContent = index % 2 !== 0;
+          return (
+            <div
+              key={`mobile-${slide.id}`}
+              className="mobile-slide"
+              style={{ display: 'flex', flexDirection: isLeftContent ? 'column-reverse' : 'column' }}
+            >
+              <div className="mobile-panel">{slide.left}</div>
+              <div className="mobile-panel">{slide.right}</div>
+            </div>
+          )
+        })}
       </section>
     )
   }
@@ -180,10 +189,10 @@ export default function SplitSlider() {
           </div>
         ))}
       </div>
-      
-      <div 
-        className="split-right" 
-        ref={rightPanelRef} 
+
+      <div
+        className="split-right"
+        ref={rightPanelRef}
         style={{ top: `calc(-${SLIDES.length - 1} * (100vh - 85px))` }}
       >
         {rightSlides.map((slide) => (
