@@ -7,6 +7,7 @@ import Story from './components/Story'
 import Infuse from './components/Infuse'
 import Loader from './components/Loader'
 import MenuNew from './components/MenuNew/MenuNew'
+import Reach from './components/Reach/Reach'
 
 function App() {
   useLenis()
@@ -32,6 +33,7 @@ function App() {
           {(() => {
             if (currentHash === '#menu-new') return <MenuNew />
             const basePath = currentHash.split('-')[0]
+            if (basePath === '#reach') return <Reach />
             if (basePath === '#infuse') return <Infuse currentHash={currentHash} />
             if (basePath === '#menu') return <MenuPage />
             if (basePath === '#story') return <Story />

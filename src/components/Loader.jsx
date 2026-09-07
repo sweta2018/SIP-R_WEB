@@ -131,8 +131,8 @@ export default function Loader({ onComplete }) {
             alignItems: 'center',
             justifyContent: 'center',
             zIndex: 20,
-            width: '120%',
-            left: '-10%',
+            width: '220%',
+            left: '-60%',
             height: '100%',
             pointerEvents: 'none'
           }}>
