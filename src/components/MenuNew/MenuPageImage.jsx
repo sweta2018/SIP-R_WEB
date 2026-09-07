@@ -13,43 +13,47 @@ const MenuPageImage = forwardRef(({ item }, ref) => {
       }}>
         {item.items.map((subItem, index) => (
           <div 
-            key={index} 
-            className="collage-image-wrapper"
+            key={index}
             style={{
-              width: '220px',
-              height: '160px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '20px',
+              flexDirection: index % 2 === 0 ? 'row' : 'row-reverse',
               alignSelf: index % 2 === 0 ? 'flex-start' : 'flex-end',
-              transform: index % 2 === 0 ? 'rotate(-4deg)' : 'rotate(4deg)',
-              boxShadow: '0 15px 35px rgba(0,0,0,0.2)',
-              borderRadius: '8px',
-              border: '4px solid #f4ebd8',
-              position: 'relative'
+              transform: index % 2 === 0 ? 'rotate(-3deg)' : 'rotate(3deg)'
             }}
           >
-            <div style={{ width: '100%', height: '100%', overflow: 'hidden', borderRadius: '4px' }}>
-              <img 
-                 src={subItem.image} 
-                 alt={subItem.name} 
-                 style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-                 loading="lazy" 
-              />
+            <div 
+              className="collage-image-wrapper"
+              style={{
+                width: '220px',
+                height: '160px',
+                boxShadow: '0 15px 35px rgba(0,0,0,0.2)',
+                borderRadius: '8px',
+                border: '4px solid #f4ebd8',
+                position: 'relative'
+              }}
+            >
+              <div style={{ width: '100%', height: '100%', overflow: 'hidden', borderRadius: '4px' }}>
+                <img 
+                   src={subItem.image} 
+                   alt={subItem.name} 
+                   style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                   loading="lazy" 
+                />
+              </div>
             </div>
             
             <div 
               style={{
-                position: 'absolute',
-                bottom: '10px',
-                right: index % 2 === 0 ? '-20px' : 'auto',
-                left: index % 2 !== 0 ? '-20px' : 'auto',
                 backgroundColor: '#f4ebd8',
-                padding: '4px 16px',
+                padding: '4px 20px',
                 borderRadius: '20px',
-                boxShadow: '0 4px 10px rgba(0,0,0,0.2)',
-                fontFamily: "'Pacifico', cursive",
+                boxShadow: '0 4px 15px rgba(0,0,0,0.15)',
+                fontFamily: "'Alex Brush', cursive",
                 color: '#4a3b32',
-                fontSize: '17px',
-                zIndex: 10,
-                transform: index % 2 === 0 ? 'rotate(8deg)' : 'rotate(-8deg)'
+                fontSize: '28px',
+                transform: index % 2 === 0 ? 'rotate(4deg)' : 'rotate(-4deg)'
               }}
             >
               {subItem.name}

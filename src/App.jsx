@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import useLenis from './hooks/useLenis'
 import Navbar from './components/Navbar'
 import SplitSlider from './components/SplitSlider'
-import MenuPage from './components/MenuPage'
 import Story from './components/Story'
 import Infuse from './components/Infuse'
 import Loader from './components/Loader'
@@ -31,11 +30,10 @@ function App() {
         <Navbar />
         <main>
           {(() => {
-            if (currentHash === '#menu-new') return <MenuNew />
             const basePath = currentHash.split('-')[0]
             if (basePath === '#reach') return <Reach />
             if (basePath === '#infuse') return <Infuse currentHash={currentHash} />
-            if (basePath === '#menu') return <MenuPage />
+            if (basePath === '#menu') return <MenuNew />
             if (basePath === '#story') return <Story />
             return <SplitSlider />
           })()}

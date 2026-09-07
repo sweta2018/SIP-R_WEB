@@ -1,6 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+
 /* =========================================================
-   Ember & Oak — Premium Coffee House
-   Global theme + section styling
+  SIP'R CSS
    ========================================================= */
 
 :root {
@@ -1346,12 +1347,12 @@ input.btn:focus {
 
 /* Philosophy Section */
 .story-philosophy {
-  padding: 100px 5%;
+  padding: 50px 5%;
   text-align: center;
 }
 
 .story-section-header {
-  margin-bottom: 60px;
+  margin-bottom: 30px;
 }
 
 .story-section-header.left-align {
@@ -1456,7 +1457,7 @@ input.btn:focus {
 
 /* Cards Section */
 .story-cards-section {
-  padding: 60px 5% 100px;
+  padding: 50px 5% 50px;
   max-width: 1300px;
   margin: 0 auto;
 }
@@ -1668,7 +1669,7 @@ input.btn:focus {
 
 .btn-outline-white {
   display: inline-block;
-  padding: 12px 30px;
+  padding: 16px 38px;
   border: 1px solid white;
   color: white;
   border-radius: 30px;
@@ -1678,6 +1679,7 @@ input.btn:focus {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   transition: all 0.3s;
+  text-align: center;
 }
 
 .btn-outline-white:hover {
@@ -1880,7 +1882,7 @@ input.btn:focus {
 .infuse-info-banner {
   display: flex;
   background-color: #f3efea;
-  margin: 100px 5% 50px;
+  margin: 50px 5% 50px;
   border-radius: 16px;
   overflow: hidden;
   align-items: stretch;

@@ -281,9 +281,7 @@ export default function Infuse({ currentHash }) {
       {/* Bakery Section */}
       <section id="bakery" className="pastries-second" ref={secondSectionRef}>
         <div className="pastries-second-left">
-          <svg className="pastries-second-icon s-anim" viewBox="0 0 24 24">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-          </svg>
+
           <h2 className="pastries-second-title s-anim">
             Made to Pair
           </h2>
@@ -300,9 +298,7 @@ export default function Infuse({ currentHash }) {
                 <img src={`${import.meta.env.BASE_URL}images/feature_croissant.png`} alt="Flaky Croissant" className="pastries-card-img" />
                 <div className="pastries-card-overlay"></div>
               </div>
-              <div className="pastries-card-icon-wrap">
-                <svg className="pastries-card-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M8 12l3 3 5-5" /></svg>
-              </div>
+
               <div className="pastries-card-content">
                 <h4 className="pastries-card-title">Flaky & Buttery</h4>
                 <p className="pastries-card-desc">Perfectly layered for that delicate, melt-in-mouth bite.</p>
@@ -314,9 +310,7 @@ export default function Infuse({ currentHash }) {
                 <img src={`${import.meta.env.BASE_URL}images/feature_muffin.png`} alt="Chocolate Muffin" className="pastries-card-img" />
                 <div className="pastries-card-overlay"></div>
               </div>
-              <div className="pastries-card-icon-wrap">
-                <svg className="pastries-card-icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /></svg>
-              </div>
+
               <div className="pastries-card-content">
                 <h4 className="pastries-card-title">Rich & Indulgent</h4>
                 <p className="pastries-card-desc">Deep flavors that satisfy your sweet cravings.</p>
@@ -328,9 +322,7 @@ export default function Infuse({ currentHash }) {
                 <img src={`${import.meta.env.BASE_URL}images/feature_baking.png`} alt="Artisan Baking" className="pastries-card-img" />
                 <div className="pastries-card-overlay"></div>
               </div>
-              <div className="pastries-card-icon-wrap">
-                <svg className="pastries-card-icon" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>
-              </div>
+
               <div className="pastries-card-content">
                 <h4 className="pastries-card-title">Crafted With Care</h4>
                 <p className="pastries-card-desc">Every detail perfected by our artisan bakers.</p>
@@ -342,9 +334,7 @@ export default function Infuse({ currentHash }) {
                 <img src={`${import.meta.env.BASE_URL}images/feature_ingredients.png`} alt="Clean Ingredients" className="pastries-card-img" />
                 <div className="pastries-card-overlay"></div>
               </div>
-              <div className="pastries-card-icon-wrap">
-                <svg className="pastries-card-icon" viewBox="0 0 24 24"><path d="M2 12h20M12 2l10 10-10 10L2 12z" /></svg>
-              </div>
+
               <div className="pastries-card-content">
                 <h4 className="pastries-card-title">Clean & Wholesome</h4>
                 <p className="pastries-card-desc">No shortcuts. Just real ingredients, simply baked.</p>
@@ -392,7 +382,7 @@ export default function Infuse({ currentHash }) {
           </div>
         </div>
         <div className="info-img-right fade-up">
-          <img src={`${import.meta.env.BASE_URL}menu-img3.png`} alt="Latte Art" />
+          <img src={`${import.meta.env.BASE_URL}HazelnutI-cold-coffee.jpg`} alt="Latte Art" />
         </div>
       </section>
 
