@@ -6,6 +6,7 @@ import MenuPage from './components/MenuPage'
 import Story from './components/Story'
 import Infuse from './components/Infuse'
 import Loader from './components/Loader'
+import MenuNew from './components/MenuNew/MenuNew'
 
 function App() {
   useLenis()
@@ -29,6 +30,7 @@ function App() {
         <Navbar />
         <main>
           {(() => {
+            if (currentHash === '#menu-new') return <MenuNew />
             const basePath = currentHash.split('-')[0]
             if (basePath === '#infuse') return <Infuse currentHash={currentHash} />
             if (basePath === '#menu') return <MenuPage />
