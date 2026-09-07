@@ -4,14 +4,16 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  padding: 120px 20px 60px; /* Offset for header */
+  padding: 120px 20px 60px;
+  /* Offset for header */
   background-image: url('/cafe-bg.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   font-family: 'Inter', sans-serif;
   color: #3e2723;
-  overflow: hidden; /* Hide book edges outside container */
+  overflow: hidden;
+  /* Hide book edges outside container */
   position: relative;
 }
 
@@ -29,17 +31,17 @@
   background-size: 100% 100%;
   background-position: center;
   background-repeat: no-repeat;
-  
+
   /* Padding adjusts where the pages sit inside the frame */
   padding: 4% 6%;
   border-radius: 12px;
-  
+
   /* Massive 3D shadow to make it pop off the background */
-  box-shadow: 
-    0 40px 80px rgba(0, 0, 0, 0.9), 
+  box-shadow:
+    0 40px 80px rgba(0, 0, 0, 0.9),
     0 20px 40px rgba(0, 0, 0, 0.7),
     0 5px 15px rgba(0, 0, 0, 0.5);
-    
+
   z-index: 2;
 }
 
@@ -51,20 +53,20 @@
   bottom: 4%;
   width: 60px;
   transform: translateX(-50%);
-  background: linear-gradient(to right, 
-    rgba(0,0,0,0.1) 0%, 
-    rgba(0,0,0,0.4) 40%, 
-    rgba(0,0,0,0.6) 50%, 
-    rgba(0,0,0,0.4) 60%, 
-    rgba(0,0,0,0.1) 100%
-  );
+  background: linear-gradient(to right,
+      rgba(0, 0, 0, 0.1) 0%,
+      rgba(0, 0, 0, 0.4) 40%,
+      rgba(0, 0, 0, 0.6) 50%,
+      rgba(0, 0, 0, 0.4) 60%,
+      rgba(0, 0, 0, 0.1) 100%);
   z-index: 10;
   pointer-events: none;
 }
 
 /* Individual Page Base */
 .menu-page {
-  background-color: #f4ebd8; /* Warm cream paper */
+  background-color: #f4ebd8;
+  /* Warm cream paper */
   box-shadow: inset 0 0 30px rgba(100, 80, 60, 0.05);
   overflow: hidden;
   position: relative;
@@ -76,21 +78,21 @@
 /* Hard page gradient to give 3d depth on the spine side */
 .menu-page.--left {
   background: linear-gradient(to right, #f4ebd8 85%, #e1d3ba 100%);
-  border-right: 1px solid rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
 }
 
 .menu-page.--right {
   background: linear-gradient(to left, #f4ebd8 85%, #e1d3ba 100%);
-  border-left: 1px solid rgba(255,255,255,0.6);
+  border-left: 1px solid rgba(255, 255, 255, 0.6);
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
 }
 
 /* Info Page Layout */
 .page-info-content {
-  padding: 60px 50px;
+  padding: 40px 40px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -100,7 +102,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   font-size: 11px;
   letter-spacing: 2.5px;
   text-transform: uppercase;
@@ -124,7 +126,7 @@
 
 .menu-title {
   /* Elegant serif */
-  font-family: "Times New Roman", Times, serif; 
+  font-family: "Times New Roman", Times, serif;
   font-size: 58px;
   font-weight: 400;
   margin: 0 0 15px 0;
@@ -135,7 +137,8 @@
 .title-separator {
   width: 35px;
   height: 2px;
-  background-color: #cda873; /* Gold/brown accent */
+  background-color: #cda873;
+  /* Gold/brown accent */
   margin-bottom: 30px;
 }
 
@@ -160,21 +163,26 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
 }
 
 .ingredients-list li {
-  font-size: 13px;
+  font-size: 15px;
   color: #4a3b32;
-  margin-bottom: 10px;
+  margin-bottom: 0;
   display: flex;
   align-items: center;
 }
 
-.ingredients-list li::before {
+.ingredients-list li:not(:last-child)::after {
   content: '•';
-  margin-right: 12px;
-  color: #cda873;
-  font-size: 10px;
+  margin-left: 8px;
+  color: #483a26;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .botanical-decor {
@@ -197,7 +205,7 @@
   height: 100%;
   object-fit: cover;
   border-radius: 2px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 /* Navigation */
@@ -207,7 +215,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
-  max-width: 1120px; /* Slightly wider than book */
+  max-width: 1120px;
+  /* Slightly wider than book */
   display: flex;
   justify-content: space-between;
   pointer-events: none;
@@ -218,9 +227,9 @@
   width: 46px;
   height: 46px;
   border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   background: transparent;
-  color: rgba(255,255,255,0.7);
+  color: rgba(255, 255, 255, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -233,7 +242,7 @@
 .nav-arrow:hover {
   border-color: #cda873;
   color: #cda873;
-  background: rgba(205,168,115,0.05);
+  background: rgba(205, 168, 115, 0.05);
 }
 
 .nav-arrow svg {
@@ -260,7 +269,7 @@
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background-color: rgba(255,255,255,0.2);
+  background-color: rgba(255, 255, 255, 0.2);
   transition: all 0.3s ease;
 }
 
@@ -270,7 +279,7 @@
 }
 
 .page-fraction {
-  color: rgba(255,255,255,0.4);
+  color: rgba(255, 255, 255, 0.4);
   font-size: 11px;
   letter-spacing: 3px;
 }
@@ -283,19 +292,52 @@
 }
 
 @media (max-width: 768px) {
+  .menu-new-container {
+    padding: 100px 10px 40px;
+  }
+
   .book-wrapper {
-    padding: 5px;
+    background-image: none;
+    /* Hide the 2-page book frame image */
+    background-color: #1c1512;
+    /* Solid dark leather color */
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
   }
+
+  .book-spine {
+    display: none;
+    /* Hide spine in single-page portrait mode */
+  }
+
+  .menu-page.--left,
+  .menu-page.--right {
+    background: #f4ebd8;
+    background-image: radial-gradient(circle, rgba(160, 130, 90, 0.02) 1px, transparent 1px);
+    border: none;
+    border-radius: 4px;
+  }
+
   .page-info-content {
-    padding: 30px 20px;
+    padding: 40px 20px;
   }
+
   .menu-title {
-    font-size: 40px;
+    font-size: 42px;
   }
+
   .menu-navigation-wrapper {
-    display: none; /* Hide side arrows on mobile, rely on swipe */
+    display: none;
+    /* Hide side arrows on mobile, rely on swipe */
   }
+
   .page-image-content {
     padding: 15px;
+  }
+
+  .page-dots {
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }

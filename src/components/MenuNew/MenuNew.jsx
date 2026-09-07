@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import './menu-new.css';
 import MenuBook from './MenuBook';
 import MenuNavigation from './MenuNavigation';
-import { menuItems } from '../../data/menuData';
+import { menuGroups } from '../../data/menuData';
 
 const MenuNew = () => {
   const [currentItem, setCurrentItem] = useState(0);
@@ -26,14 +26,14 @@ const MenuNew = () => {
   return (
     <section className="menu-new-container">
       <MenuBook 
-        items={menuItems} 
+        items={menuGroups} 
         onPageChange={setCurrentItem} 
         ref={bookRef}
       />
       
       <MenuNavigation 
         currentItem={currentItem} 
-        totalItems={menuItems.length + 1} 
+        totalItems={menuGroups.length} 
         onPrev={handlePrev} 
         onNext={handleNext} 
       />

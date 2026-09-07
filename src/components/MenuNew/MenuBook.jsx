@@ -12,30 +12,25 @@ const MenuCoverLeft = forwardRef((props, ref) => (
 ));
 MenuCoverLeft.displayName = 'MenuCoverLeft';
 
-const MenuCoverRight = forwardRef((props, ref) => (
+const MenuCoverRight = forwardRef(({ title, subtitle }, ref) => (
   <div className="menu-page --right" ref={ref}>
     <div className="page-info-content" style={{ justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
-      <h1 className="menu-title" style={{ fontSize: '52px', marginBottom: '20px', lineHeight: '1.2' }}>Hot n Cold<br />Coffee</h1>
+      <h1 className="menu-title" style={{ fontSize: '52px', marginBottom: '20px', lineHeight: '1.2' }} dangerouslySetInnerHTML={{ __html: title || "Menu" }}></h1>
       <div className="title-separator" style={{ margin: '0 auto 30px' }}></div>
-      <p className="menu-desc" style={{ maxWidth: '100%', fontSize: '14px', letterSpacing: '5px', textTransform: 'uppercase', color: '#7b6256' }}>Menu</p>
+      <p className="menu-desc" style={{ maxWidth: '100%', fontSize: '14px', letterSpacing: '5px', textTransform: 'uppercase', color: '#7b6256' }}>{subtitle}</p>
     </div>
   </div>
 ));
 MenuCoverRight.displayName = 'MenuCoverRight';
 
-
 const MenuBook = forwardRef(({ items, onPageChange }, ref) => {
-  // Update parent with current page to drive navigation dots
   const handleFlip = (e) => {
-    // e.data is the current page index (0-based)
-    // Pages 0,1 are the Cover spread. Pages 2,3 are item 0.
     const spreadIndex = Math.floor(e.data / 2);
     onPageChange(spreadIndex);
   };
 
   return (
     <div className="book-wrapper">
-      {/* <div className="book-spine"></div> */}
       <HTMLFlipBook
         width={450}
         height={600}
@@ -52,15 +47,20 @@ const MenuBook = forwardRef(({ items, onPageChange }, ref) => {
         className="menu-flip-book"
         ref={ref}
         onFlip={handleFlip}
-        usePortrait={false}
+        usePortrait={true}
       >
-        <MenuCoverLeft />
-        <MenuCoverRight />
-
-        {items.flatMap((item, index) => [
-          <MenuPageInfo key={`info-${item.id}`} item={item} pageNum={index + 1} totalPages={items.length} />,
-          <MenuPageImage key={`img-${item.id}`} item={item} />
-        ])}
+        {items.flatMap((item, index) => {
+          if (item.type === 'cover') {
+            return [
+              <MenuCoverLeft key={`cover-l-${item.id}`} />,
+              <MenuCoverRight key={`cover-r-${item.id}`} title={item.title} subtitle={item.subtitle} />
+            ];
+          }
+          return [
+            <MenuPageInfo key={`info-${item.id}`} item={item} pageNum={index + 1} totalPages={items.length} />,
+            <MenuPageImage key={`img-${item.id}`} item={item} />
+          ];
+        })}
       </HTMLFlipBook>
     </div>
   );

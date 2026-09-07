@@ -1,82 +1,191 @@
-export const menuItems = [
+export const menuGroups = [
+  {
+    id: "cover-1",
+    type: "cover",
+    title: "Hot n Cold<br/>Coffee",
+    subtitle: "Menu"
+  },
   {
     id: 1,
+    type: "items",
     category: "HOT COFFEE",
-    name: "Espresso Shot",
-    description: "A concentrated form of coffee served in a small, strong shot.",
-    ingredients: ["Freshly ground espresso beans", "Hot water"],
-    image: "/espresso.png"
+    items: [
+      {
+        name: "Espresso Shot",
+        ingredients: ["Freshly ground espresso beans", "Hot water"],
+        image: "/espresso.png"
+      },
+      {
+        name: "Hot Americano",
+        ingredients: ["Espresso", "Hot water"],
+        image: "/hot-americano.png"
+      },
+      {
+        name: "Cappuccino",
+        ingredients: ["Double Espresso", "Steamed Milk", "Milk Foam"],
+        image: "/cuppacchino.jpg"
+      }
+    ]
   },
   {
     id: 2,
+    type: "items",
     category: "HOT COFFEE",
-    name: "Hot Americano",
-    description: "A classic Americano consisting of espresso diluted with hot water.",
-    ingredients: ["Espresso", "Hot water"],
-    image: "/hot-americano.png"
+    items: [
+      {
+        name: "Latte",
+        ingredients: ["Espresso", "Steamed Milk", "Milk Foam"],
+        image: "/hot-latte.png"
+      },
+      {
+        name: "Mocha",
+        ingredients: ["Espresso", "Chocolate syrup", "Steamed milk"],
+        image: "/mocha.png"
+      },
+      {
+        name: "Flat White",
+        ingredients: ["Double Espresso", "Microfoam milk"],
+        image: "/flat-white.jpg"
+      }
+    ]
   },
   {
     id: 3,
-    category: "HOT COFFEE",
-    name: "Cappuccino",
-    description: "A classic Italian coffee drink that is traditionally prepared with equal parts double espresso, steamed milk, and steamed milk foam on top.",
-    ingredients: ["Double Espresso", "Steamed Milk", "Milk Foam"],
-    image: "/cuppacchino.jpg"
+    type: "items",
+    category: "COLD COFFEE",
+    items: [
+      {
+        name: "Iced Americano",
+        ingredients: ["Espresso", "Cold water", "Ice cubes"],
+        image: "/iced-americano.png"
+      },
+      {
+        name: "Iced Latte",
+        ingredients: ["Espresso", "Cold milk", "Ice cubes"],
+        image: "/iced-latte.jpg"
+      },
+      {
+        name: "Hazelnut Cold Coffee",
+        ingredients: ["Espresso", "Hazelnut syrup", "Cold milk", "Ice"],
+        image: "/HazelnutI-cold-coffee.jpg"
+      },
+      {
+        name: "Cold Brew Coffee",
+        ingredients: ["Coarse ground coffee", "Cold water", "Time"],
+        image: "/cold-brew.png"
+      }
+    ]
+  },
+  {
+    id: "cover-2",
+    type: "cover",
+    title: "Mocktails",
+    subtitle: "Refreshers"
   },
   {
     id: 4,
-    category: "HOT COFFEE",
-    name: "Latte",
-    description: "A smooth blend of espresso, steamed milk and velvety milk foam.",
-    ingredients: ["Espresso", "Steamed Milk", "Milk Foam"],
-    image: "/hot-latte.png"
+    type: "items",
+    category: "MOCKTAILS",
+    items: [
+      {
+        name: "Orange Cold Brew",
+        ingredients: ["Cold Brew Coffee", "Fresh Orange Juice", "Simple Syrup", "Ice"],
+        image: "/orange-cold.jpg"
+      },
+      {
+        name: "Blue Lagoon",
+        ingredients: ["Blue Curaçao Syrup", "Lemonade", "Soda Water", "Ice"],
+        image: "/blue-lagoon.jpg"
+      },
+      {
+        name: "Green Apple Mojito",
+        ingredients: ["Green Apple Syrup", "Fresh Mint", "Lime Juice", "Soda Water"],
+        image: "/green-apple.jpg"
+      }
+    ]
   },
   {
     id: 5,
-    category: "HOT COFFEE",
-    name: "Mocha",
-    description: "A chocolate-flavored warm beverage that is a variant of a caffè latte.",
-    ingredients: ["Espresso", "Chocolate syrup", "Steamed milk"],
-    image: "/mocha.png"
+    type: "items",
+    category: "MOCKTAILS",
+    items: [
+      {
+        name: "Sunburst Hibiscus Tea",
+        ingredients: ["Brewed Hibiscus Tea", "Pineapple Juice", "Orange Slice", "Ice"],
+        image: "/sunburst.jpg"
+      },
+      {
+        name: "Carribbean Sunset",
+        ingredients: ["Mango Puree", "Orange Juice", "Grenadine", "Soda"],
+        image: "/carribbean.jpg"
+      }
+    ]
   },
   {
     id: 6,
-    category: "HOT COFFEE",
-    name: "Flat White",
-    description: "An espresso-based coffee drink consisting of espresso with microfoam.",
-    ingredients: ["Double Espresso", "Microfoam milk"],
-    image: "/flat-white.jpg"
+    type: "items",
+    category: "SIGNATURE DRINKS",
+    items: [
+      {
+        name: "Cosmic Twilight",
+        ingredients: ["Butterfly Pea Tea", "Lemon Juice", "Edible Glitter", "Lavender Syrup"],
+        image: "/cosmic.jpg"
+      },
+      {
+        name: "Hibiscus Espresso",
+        ingredients: ["Espresso Shot", "Hibiscus Syrup", "Tonic Water", "Ice"],
+        image: "/hibiscus.jpg"
+      }
+    ]
+  },
+  {
+    id: "cover-3",
+    type: "cover",
+    title: "Bakery",
+    subtitle: "Sweet Treats"
   },
   {
     id: 7,
-    category: "COLD COFFEE",
-    name: "Iced Americano",
-    description: "A refreshing cold espresso drink diluted with water and served over ice.",
-    ingredients: ["Espresso", "Cold water", "Ice cubes"],
-    image: "/iced-americano.png"
+    type: "items",
+    category: "BAKERY",
+    items: [
+      {
+        name: "Blueberry Cheesecake",
+        ingredients: ["Cream Cheese", "Graham Cracker Crust", "Blueberry Compote"],
+        image: "/blueberry-cake.jpg"
+      },
+      {
+        name: "Croissant",
+        ingredients: ["Flour", "Butter", "Yeast", "Sugar"],
+        image: "/crossiant.jpg"
+      },
+      {
+        name: "Chocolate Pastry",
+        ingredients: ["Chocolate Ganache", "Cocoa Powder", "Sponge Cake"],
+        image: "/pastry.jpg"
+      }
+    ]
   },
   {
     id: 8,
-    category: "COLD COFFEE",
-    name: "Iced Latte",
-    description: "Chilled milk over ice, topped with a rich espresso shot.",
-    ingredients: ["Espresso", "Cold milk", "Ice cubes"],
-    image: "/iced-latte.jpg"
-  },
-  {
-    id: 9,
-    category: "COLD COFFEE",
-    name: "Hazelnut Cold Coffee",
-    description: "Sweet, nutty hazelnut syrup blended with coffee, milk, and ice.",
-    ingredients: ["Espresso", "Hazelnut syrup", "Cold milk", "Ice"],
-    image: "/HazelnutI-cold-coffee.jpg"
-  },
-  {
-    id: 10,
-    category: "COLD COFFEE",
-    name: "Cold Brew Coffee",
-    description: "Smooth, less acidic coffee brewed slowly in cold water for hours.",
-    ingredients: ["Coarse ground coffee", "Cold water", "Time"],
-    image: "/cold-brew.png"
+    type: "items",
+    category: "BAKERY",
+    items: [
+      {
+        name: "Chocolate Brownie",
+        ingredients: ["Dark Chocolate", "Walnuts", "Butter", "Cocoa"],
+        image: "/brownei.jpg"
+      },
+      {
+        name: "Muffins",
+        ingredients: ["Flour", "Blueberries", "Vanilla", "Brown Sugar"],
+        image: "/muffins.jpg"
+      },
+      {
+        name: "Cookies",
+        ingredients: ["Chocolate Chips", "Brown Sugar", "Butter", "Vanilla Extract"],
+        image: "/cookies.jpg"
+      }
+    ]
   }
 ];
