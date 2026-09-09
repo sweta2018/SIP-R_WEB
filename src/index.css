@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 /* =========================================================
   SIP'R CSS
@@ -2001,6 +2001,10 @@ input.btn:focus {
 @media (max-width: 768px) {
   .infuse-grid-3 {
     grid-template-columns: 1fr;
+  }
+
+  .story-hero-right {
+    display: none;
   }
 
   .infuse-grid-4 {

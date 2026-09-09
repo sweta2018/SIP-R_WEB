@@ -14,6 +14,7 @@ const MenuPageImage = forwardRef(({ item }, ref) => {
         {item.items.map((subItem, index) => (
           <div 
             key={index}
+            className="menu-page-image-item"
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -45,14 +46,17 @@ const MenuPageImage = forwardRef(({ item }, ref) => {
             </div>
             
             <div 
+              className="menu-item-name-badge"
               style={{
                 backgroundColor: '#f4ebd8',
+                backgroundImage: 'url(/paper.png)',
+                backgroundSize: '100% 100%',
                 padding: '4px 20px',
                 borderRadius: '20px',
                 boxShadow: '0 4px 15px rgba(0,0,0,0.15)',
-                fontFamily: "'Alex Brush', cursive",
+                fontFamily: "'Lobster Two', cursive",
                 color: '#4a3b32',
-                fontSize: '28px',
+                fontSize: '20px',
                 transform: index % 2 === 0 ? 'rotate(4deg)' : 'rotate(-4deg)'
               }}
             >

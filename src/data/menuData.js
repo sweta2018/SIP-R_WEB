@@ -107,7 +107,7 @@ export const menuGroups = [
   {
     id: 5,
     type: "items",
-    category: "MOCKTAILS",
+    category: "MOCKTAILS & SIGNATURES",
     items: [
       {
         name: "Sunburst Hibiscus Tea",
@@ -118,14 +118,7 @@ export const menuGroups = [
         name: "Carribbean Sunset",
         ingredients: ["Mango Puree", "Orange Juice", "Grenadine", "Soda"],
         image: "/carribbean.jpg"
-      }
-    ]
-  },
-  {
-    id: 6,
-    type: "items",
-    category: "SIGNATURE DRINKS",
-    items: [
+      },
       {
         name: "Cosmic Twilight",
         ingredients: ["Butterfly Pea Tea", "Lemon Juice", "Edible Glitter", "Lavender Syrup"],

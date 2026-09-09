@@ -370,4 +370,35 @@
     flex-wrap: wrap;
     justify-content: center;
   }
+
+  .page-image-collage {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 15px !important;
+    padding: 15px !important;
+    align-content: center !important;
+  }
+
+  .collage-image-wrapper {
+    width: 100% !important;
+    max-width: 165px !important;
+    height: 130px !important;
+    margin: 0 auto;
+    border-width: 3px !important;
+  }
+
+  .menu-page-image-item {
+    flex-direction: column !important;
+    gap: 10px !important;
+    transform: none !important;
+    align-self: center !important;
+    width: 100%;
+  }
+
+  .menu-item-name-badge {
+    transform: none !important;
+    font-size: 18px !important;
+    padding: 3px 15px !important;
+    text-align: center;
+  }
 }
