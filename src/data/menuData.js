@@ -63,7 +63,14 @@ export const menuGroups = [
         name: "Iced Latte",
         ingredients: ["Espresso", "Cold milk", "Ice cubes"],
         image: "/iced-latte.jpg"
-      },
+      }
+    ]
+  },
+  {
+    id: 31,
+    type: "items",
+    category: "COLD COFFEE",
+    items: [
       {
         name: "Hazelnut Cold Coffee",
         ingredients: ["Espresso", "Hazelnut syrup", "Cold milk", "Ice"],
@@ -107,7 +114,7 @@ export const menuGroups = [
   {
     id: 5,
     type: "items",
-    category: "MOCKTAILS & SIGNATURES",
+    category: "MOCKTAILS",
     items: [
       {
         name: "Sunburst Hibiscus Tea",
@@ -118,7 +125,14 @@ export const menuGroups = [
         name: "Carribbean Sunset",
         ingredients: ["Mango Puree", "Orange Juice", "Grenadine", "Soda"],
         image: "/carribbean.jpg"
-      },
+      }
+    ]
+  },
+  {
+    id: 6,
+    type: "items",
+    category: "SIGNATURE DRINKS",
+    items: [
       {
         name: "Cosmic Twilight",
         ingredients: ["Butterfly Pea Tea", "Lemon Juice", "Edible Glitter", "Lavender Syrup"],

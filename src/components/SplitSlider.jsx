@@ -39,7 +39,7 @@ const SLIDES = [
           text="A little citrus. A little fizz. A lot of flavour. Crafted to refresh, surprise, and make every sip a little more memorable."
         />
         <div style={{ marginTop: '40px', display: 'flex', justifyContent: 'flex-end' }}>
-          <a href="#infuse-coffee" className="btn btn-fill">Discover Thirst</a>
+          <a href="#indulge-coffee" className="btn btn-fill">Discover Thirst</a>
         </div>
       </div>
     ),
@@ -64,7 +64,7 @@ const SLIDES = [
           text="From buttery pastries to rich brownies, crisp crackers and freshly baked cookies — the perfect bite to pair with your SIPR favourite."
         />
         <div style={{ marginTop: '40px' }}>
-          <a href="#infuse-bakery" className="btn btn-fill">Discover Craves</a>
+          <a href="#indulge-bakery" className="btn btn-fill">Discover Craves</a>
         </div>
       </div>
     )

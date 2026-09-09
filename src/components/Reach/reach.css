@@ -80,7 +80,7 @@
 }
 
 .hero-desc {
-  font-size: 16px;
+  font-size: 20px;
   line-height: 1.6;
   max-width: 350px;
   color: #4a3b32;
@@ -295,11 +295,11 @@
   font-weight: 400;
   color: #2b1c15;
   margin-bottom: 25px;
-  max-width: 400px;
+  max-width: 500px;
 }
 
 .map-desc {
-  font-size: 15px;
+  font-size: 20px;
   line-height: 1.6;
   max-width: 350px;
   color: #4a3b32;
@@ -317,6 +317,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-top: 17px;
 }
 
 .hours-info {
@@ -331,7 +332,7 @@
 }
 
 .hours-label {
-  font-size: 10px;
+  font-size: 15px;
   letter-spacing: 2px;
   text-transform: uppercase;
   margin-bottom: 8px;
@@ -340,7 +341,7 @@
 }
 
 .hours-value {
-  font-size: 15px;
+  font-size: 18px;
   color: #2b1c15;
   line-height: 1.5;
 }

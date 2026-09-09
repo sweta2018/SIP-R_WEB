@@ -3,10 +3,11 @@ import useLenis from './hooks/useLenis'
 import Navbar from './components/Navbar'
 import SplitSlider from './components/SplitSlider'
 import Story from './components/Story'
-import Infuse from './components/Infuse'
+import Indulge from './components/Indulge'
 import Loader from './components/Loader'
 import MenuNew from './components/MenuNew/MenuNew'
 import Reach from './components/Reach/Reach'
+import Popup from './components/Popup'
 
 function App() {
   useLenis()
@@ -32,12 +33,13 @@ function App() {
           {(() => {
             const basePath = currentHash.split('-')[0]
             if (basePath === '#reach') return <Reach />
-            if (basePath === '#infuse') return <Infuse currentHash={currentHash} />
+            if (basePath === '#indulge') return <Indulge currentHash={currentHash} />
             if (basePath === '#menu') return <MenuNew />
             if (basePath === '#story') return <Story />
             return <SplitSlider />
           })()}
         </main>
+        <Popup />
       </div>
     </>
   )

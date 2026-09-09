@@ -28,7 +28,7 @@ export default function Loader({ onComplete }) {
         // fade out loader
         gsap.to(loaderRef.current, {
           opacity: 0,
-          duration: 0.8,
+          duration: 0.4,
           ease: 'power2.inOut',
           onComplete: () => {
             if (onComplete) onComplete()
@@ -42,8 +42,8 @@ export default function Loader({ onComplete }) {
     gsap.set(textNodesRef.current, { opacity: 0, display: 'block' })
 
     // Create sequence animation
-    const timePerFrame = 0.8; // slightly longer to allow reading the text
-    const fadeDuration = 0.4; // seconds for crossfade
+    const timePerFrame = 0.35; // reduced time to read
+    const fadeDuration = 0.2; // faster crossfade
 
     steps.forEach((_, index) => {
       const img = imagesRef.current[index];
@@ -65,23 +65,21 @@ export default function Loader({ onComplete }) {
 
       // Add SIP'R logo animation on the last step (index 4)
       if (index === 4) {
-        // Wait 1.0 seconds, then fade out the step4 image completely
-        tl.to(img, { opacity: 0, duration: 0.4 }, `crossfade${index}+=1.0`)
-        tl.to(textNode, { opacity: 0, duration: 0.4 }, `crossfade${index}+=1.0`)
+        // Wait briefly, then fade out the step4 image completely
+        tl.to(img, { opacity: 0, duration: 0.2 }, `crossfade${index}+=0.4`)
+        tl.to(textNode, { opacity: 0, duration: 0.2 }, `crossfade${index}+=0.4`)
 
         const logoLetters = [sRef.current, glassRef.current, pRef.current, dropRef.current, rRef.current];
         tl.fromTo(logoLetters,
-          { y: -80, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: 'bounce.out' },
-          `crossfade${index}+=1.2`
+          { y: -60, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.4, stagger: 0.05, ease: 'bounce.out' },
+          `crossfade${index}+=0.5`
         )
       }
 
       // Wait for the frame duration
       if (index === 4) {
-        // The logo drop finishes around crossfade4 + 2.0s. 
-        // We transition to the main page almost instantly after it completes.
-        tl.to({}, { duration: 0.2 }, `crossfade${index}+=2.0`)
+        tl.to({}, { duration: 0.1 }, `crossfade${index}+=1.2`)
       } else {
         tl.to({}, { duration: timePerFrame })
       }

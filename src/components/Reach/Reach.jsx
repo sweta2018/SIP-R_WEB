@@ -27,7 +27,7 @@ export default function Reach() {
             to hear from you.
           </p>
           <div className="reach-script hero-script">
-            Some<br />Table<br />Always.
+            Some Table<br />Always.
           </div>
         </div>
 
@@ -58,9 +58,9 @@ export default function Reach() {
                 <path d="M2 4l10 8 10-8" />
               </svg>
             </div>
-            <span className="info-item-label">EMAIL</span>
-            <span className="info-item-value">hello@siprkolkata.com</span>
-            <a href="mailto:hello@siprkolkata.com" className="info-item-link">Send us an email &rarr;</a>
+            <h3 className="info-item-title">E-mail</h3>
+            <span className="info-item-value">siprkolkata@gmail.com</span>
+            <a href="mailto:siprkolkata@gmail.com" className="info-item-link">Send us an email &rarr;</a>
           </div>
 
           {/* WhatsApp */}
@@ -70,9 +70,9 @@ export default function Reach() {
                 <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
               </svg>
             </div>
-            <span className="info-item-label">CALL / WHATSAPP</span>
-            <span className="info-item-value">+91 98765 43210</span>
-            <a href="#" className="info-item-link">Chat on WhatsApp &rarr;</a>
+            <h3 className="info-item-title">Phone numbers</h3>
+            <span className="info-item-value">+91 8100606004</span>
+            <a href="tel:+918100606004" className="info-item-link">Call us &rarr;</a>
           </div>
 
           {/* Location */}

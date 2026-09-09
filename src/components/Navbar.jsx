@@ -99,11 +99,11 @@ const NavItem = ({ firstLetter, restWord, href, onClick }) => {
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  const [currentHash, setCurrentHash] = useState(window.location.hash || '#hero')
+  const [currentHash, setCurrentHash] = useState(window.location.hash || '')
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
-    const onHashChange = () => setCurrentHash(window.location.hash || '#hero')
+    const onHashChange = () => setCurrentHash(window.location.hash || '')
     window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('hashchange', onHashChange)
     return () => {
@@ -116,7 +116,12 @@ export default function Navbar() {
     <>
       <nav className={`site-nav ${scrolled ? 'scrolled' : ''}`}>
         <div className="container">
-          <a href="#hero" className="brand">
+          <a href="#" className="brand" onClick={(e) => {
+            e.preventDefault();
+            window.history.pushState("", document.title, window.location.pathname + window.location.search);
+            window.dispatchEvent(new Event('hashchange'));
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}>
             <img src={`${import.meta.env.BASE_URL}sipr-logo.png`} alt="" width={150} />
           </a>
 
@@ -134,8 +139,8 @@ export default function Navbar() {
         <div className={`mobile-nav-panel ${menuOpen ? 'active' : ''}`}>
           <div className="mobile-nav-links">
             <NavItem firstLetter="S" restWord="tory" href="#story" onClick={() => setMenuOpen(false)} />
-            <NavItem firstLetter="I" restWord="nfuse" href="#infuse" onClick={() => setMenuOpen(false)} />
-            <NavItem firstLetter="P" restWord="astries" href="#infuse-bakery" onClick={() => setMenuOpen(false)} />
+            <NavItem firstLetter="I" restWord="ndulge" href="#indulge" onClick={() => setMenuOpen(false)} />
+            <NavItem firstLetter="P" restWord="icks" href="#menu" onClick={() => setMenuOpen(false)} />
             <NavItem firstLetter="R" restWord="each" href="#reach" onClick={() => setMenuOpen(false)} />
           </div>
 
